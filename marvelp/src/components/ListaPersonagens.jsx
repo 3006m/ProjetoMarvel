@@ -15,7 +15,7 @@ function ListaPersonagens() {
         setCarregando(true);
         const ts = Date.now().toString();
         const hash = md5(ts + CHAVE_PRIVADA + CHAVE_PUBLICA);
-        const url = `https://gateway.marvel.com/v1/public/characters?limit=12&ts=${ts}&apikey=${CHAVE_PUBLICA}&hash=${hash}`;
+        const url = `https://gateway.marvel.com/v1/public/characters?limit=92&ts=${ts}&apikey=${CHAVE_PUBLICA}&hash=${hash}`;
 
         const resposta = await fetch(url);
         const dados = await resposta.json();
