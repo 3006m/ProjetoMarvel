@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Para pegar o ID da URL
 import md5 from "blueimp-md5";
+import "../style/Api.css";
 
 const CHAVE_PUBLICA = "f207163107199ed0a29dea5edac0aafd";
 const CHAVE_PRIVADA = "28fa8b1b48a30973e84405ee9c5efea4157a8fa6";
@@ -52,32 +53,33 @@ function DetalhesPersonagem() {
 
   // Exibição dos detalhes do personagem
   return (
-    <div style={{ padding: 20, maxWidth: 800, margin: "auto", textAlign: "center" }}>
-      <img
-        src={`${personagem.thumbnail.path}/portrait_fantastic.${personagem.thumbnail.extension}`}
-        alt={personagem.name}
-        style={{ width: "100%", maxWidth: 300, borderRadius: 8, marginBottom: 20 }}
-      />
-      <h2>{personagem.name}</h2>
-      {personagem.description ? (
-        <p>{personagem.description}</p>
-      ) : (
-        <p>Este personagem não possui uma descrição disponível.</p>
-      )}
+  <div className="detalhes-personagem-container">
+    <img
+      src={`${personagem.thumbnail.path}/portrait_fantastic.${personagem.thumbnail.extension}`}
+      alt={personagem.name}
+      className="detalhes-personagem-img"
+    />
+    <h2 className="detalhes-personagem-nome">{personagem.name}</h2>
+    {personagem.description ? (
+      <p className="detalhes-personagem-desc">{personagem.description}</p>
+    ) : (
+      <p className="detalhes-personagem-desc">Este personagem não possui uma descrição disponível.</p>
+    )}
 
-      {/* Exemplo de outros detalhes que você pode adicionar */}
-      {personagem.comics.available > 0 && (
-        <>
-          <h3>Aparições em Quadrinhos ({personagem.comics.available}):</h3>
-          <ul style={{ listStyleType: "none", padding: 0 }}>
-            {personagem.comics.items.map((comic, index) => (
-              <li key={index}>{comic.name}</li>
-            ))}
-          </ul>
-        </>
-      )}
-    </div>
-  );
+    {personagem.comics.available > 0 && (
+      <>
+        <h3 className="detalhes-personagem-comics-titulo">
+          Aparições em Quadrinhos ({personagem.comics.available}):
+        </h3>
+        <ul className="detalhes-personagem-comics-lista">
+          {personagem.comics.items.map((comic, index) => (
+            <li key={index}>{comic.name}</li>
+          ))}
+        </ul>
+      </>
+    )}
+  </div>
+);
 }
 
 export default DetalhesPersonagem;
