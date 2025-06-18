@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BotaoLike from "./botaolike";
 import md5 from "blueimp-md5";
 
 const CHAVE_PUBLICA = "f207163107199ed0a29dea5edac0aafd";
@@ -55,6 +56,7 @@ function ListaPersonagens() {
             style={{ width: "100%", borderRadius: 8 }}
           />
           <h3>{heroi.name}</h3>
+          <BotaoLike id={heroi.id} />
         </div>
       ))}
     </div>
