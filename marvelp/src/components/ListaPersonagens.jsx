@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importe useNavigate
 import md5 from "blueimp-md5";
+import "../style/Api.css";
 
 const CHAVE_PUBLICA = "f207163107199ed0a29dea5edac0aafd";
 const CHAVE_PRIVADA = "28fa8b1b48a30973e84405ee9c5efea4157a8fa6";
@@ -19,7 +20,6 @@ function ListaPersonagens() {
         setCarregando(true);
         const ts = Date.now().toString();
         const hash = md5(ts + CHAVE_PRIVADA + CHAVE_PUBLICA);
-
         const url = `https://gateway.marvel.com/v1/public/characters?ts=${ts}&apikey=${CHAVE_PUBLICA}&hash=${hash}&limit=${LIMITE_POR_PAGINA}&offset=${offset}`;
 
         const resposta = await fetch(url);
